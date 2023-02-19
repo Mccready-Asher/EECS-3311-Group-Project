@@ -80,13 +80,21 @@ public class ProjUIDemo {
 		
 		GridLayout gl = new GridLayout(2,3);
 		cp.setLayout(gl);
-		JButton b1 = new JButton("visualization 1 (unimplemented)");
+		JButton b1 = new JButton("Visualization 1 (demo) ");
 		JButton b2 = new JButton("visualization 2 (unimplemented)");
 		JButton b3 = new JButton("visualization 3 (unimplemented)");
 		JButton b4 = new JButton("visualization 4 (unimplemented)");
 		JButton b5 = new JButton("visualization 5 (unimplemented)");
 		
-		b1=unimpLink(b1);
+		ActionListener dem1Link = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				
+				setDemo1();
+			}
+		};
+		b1.addActionListener(dem1Link);
+		
 		b2=unimpLink(b2);
 		b3=unimpLink(b3);
 		b4=unimpLink(b4);
@@ -142,7 +150,33 @@ public class ProjUIDemo {
 		frame.setVisible(true);
 	}
 	
-	
+	public void setDemo1() {
+		Container cp = frame.getContentPane();
+		
+		nuke(); //boom
+		
+		BoxLayout box = new BoxLayout(cp,BoxLayout.Y_AXIS);
+		cp.setLayout(box);
+		
+		JButton backbut = new JButton("\u2190 Back");
+		
+		ActionListener bBL = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				
+				setMenu();
+			}
+		};
+		backbut.addActionListener(bBL);
+		
+		cp.add(backbut);
+		
+		
+		
+		
+		
+		frame.setVisible(true);
+	}
 	
 	private void nuke() { //eraser method with a flair for the dramatic 
 		Container cp = frame.getContentPane();
