@@ -33,7 +33,7 @@ public class ProjUIDemo {
 		width = w;
 		height = h;
 	}
-	public void launch() { //one method to set everything off, makes the tester class as small as possible.
+	public void launchAppDemo() { //one method to set everything off, makes the tester class as small as possible.
 		setUpFrame();
 		setUpButtonListeners();
 		setTitle();
