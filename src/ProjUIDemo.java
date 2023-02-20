@@ -9,7 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.Container;
 import java.awt.Component;
 import java.awt.Dimension; //todo, fewer import calls
-
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.chart.plot.PlotOrientation;
 
 
 
@@ -172,7 +177,7 @@ public class ProjUIDemo {
 		cp.add(backbut);
 		
 		
-		
+		cp.add(getDemoChart());
 		
 		
 		frame.setVisible(true);
@@ -215,6 +220,22 @@ public class ProjUIDemo {
 		};
 		jb.addActionListener(unimBL);
 		return jb;
+	}
+	
+	private ChartPanel getDemoChart() {
+		XYSeries series = new XYSeries("XYGraph");
+		series.add(1, 1);
+		series.add(1, 2);
+		series.add(2, 1);
+		series.add(3, 9);
+		series.add(4, 10);
+
+		XYSeriesCollection dataset = new XYSeriesCollection();
+	    dataset.addSeries(series);
+
+		JFreeChart chart = ChartFactory.createXYLineChart("XY Chart", "x-axis", "y-axis",dataset,PlotOrientation.VERTICAL,true,true,false );
+		
+		return new ChartPanel(chart);
 	}
 	
 }
