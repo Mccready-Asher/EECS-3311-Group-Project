@@ -224,16 +224,21 @@ public class ProjUIDemo {
 	
 	private ChartPanel getDemoChart() {
 		XYSeries series = new XYSeries("XYGraph");
-		series.add(1, 1);
-		series.add(1, 2);
+		series.add(1, 0);
 		series.add(2, 1);
-		series.add(3, 9);
-		series.add(4, 10);
+		series.add(3, 4);
+		series.add(4, 5);
+		series.add(5, 7);
+		series.add(6, 8);
+		series.add(7, 10);
+		series.add(8, 11);
+		series.add(9, 12);
+		series.add(10, 15);
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 	    dataset.addSeries(series);
 
-		JFreeChart chart = ChartFactory.createXYLineChart("XY Chart", "x-axis", "y-axis",dataset,PlotOrientation.VERTICAL,true,true,false );
+		JFreeChart chart = ChartFactory.createXYLineChart("Demo Chart", "Number of concurrent assignments", "average energy drinks drunk per day",dataset,PlotOrientation.VERTICAL,true,true,false );
 		
 		return new ChartPanel(chart);
 	}
