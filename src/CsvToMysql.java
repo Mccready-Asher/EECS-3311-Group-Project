@@ -11,7 +11,7 @@ public class CsvToMysql {
         String csvFilePath = "C:\\Users\\Yousif\\Downloads\\18100205.csv"; //path to the csv file.
         String url = "jdbc:mysql://localhost:8080/proj3311"; // yours will probably on port 3306.
         String username = "root";
-        String password = "my-secret-pw";
+        String password = "my-secret-pw"; // this depends on what you set
         boolean skip = true; 
         
         try (Connection connection = DriverManager.getConnection(url, username, password)) { // try connecting
