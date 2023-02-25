@@ -36,8 +36,15 @@ public class MyDAO {
 	private static final String GET_DATA_BY_PARAMETERS_YR = "SELECT LEFT(REF_DATE, 4), AVG(VALUE)\r\n"
 			+ "FROM range18100205\r\n" + "WHERE GEO ? AND VALUE <> '' ?\r\n" + "GROUP BY LEFT(REF_DATE, 4);";
 
+
+
+
+
 	/**
 	 * Returns a list of distinct GEO values from the database.
+	 * 
+	 * @return a List of Strings representing the distinct geographical values in the database.
+	 * @throws SQLException if a database access error occurs or the SQL statement fails.
 	 */
 	public List<String> getDistinctGeoValues() throws SQLException {
 		List<String> geoValues = new ArrayList<>();
@@ -53,6 +60,9 @@ public class MyDAO {
 
 	/**
 	 * Returns a list of distinct REF_DATE values from the database.
+	 * 
+	 * @return a List of Strings representing the distinct reference date values in the database.
+	 * @throws SQLException if a database access error occurs or the SQL statement fails.
 	 */
 	public List<String> getDistinctRefDateValues() throws SQLException {
 		List<String> refDateValues = new ArrayList<>();
@@ -68,6 +78,11 @@ public class MyDAO {
 
 	/**
 	 * Returns data from the database for the given GEO and REF_DATE parameters.
+	 * 
+	 * @param geo a String representing the geographical value to retrieve data for. 
+	 * @param monthly a boolean indicating whether to retrieve data on a monthly or yearly basis.
+	 * @return a List of RowData objects representing the data retrieved from the database.
+	 * @throws SQLException if a database access error occurs or the SQL statement fails.
 	 */
 	public List<RowData> getDataByGeo(String geo, boolean monthly) throws SQLException {
 		List<RowData> data = new ArrayList<>();
@@ -98,6 +113,18 @@ public class MyDAO {
 		}
 		return data;
 	}
+
+	/**
+	 * Returns a list of RowData objects containing the average value for each distinct reference date 
+	 * for a specific geographical area, within a custom date range.
+	 * 
+	 * @param geo a string representing the geographic region to retrieve data for
+	 * @param start a string representing the start date of the data range
+	 * @param end a string representing the end date of the data range
+	 * @param monthly a boolean indicating whether the data should be retrieved monthly or yearly
+	 * @return a list of RowData objects containing the average value for each distinct reference date
+	 * @throws SQLException if there is a database error
+	 */
 
 	public List<RowData> getCustomDataByGeo(String geo, String start, String end, boolean monthly) throws SQLException {
 		List<RowData> data = new ArrayList<>();
