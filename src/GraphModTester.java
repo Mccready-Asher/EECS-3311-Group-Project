@@ -13,6 +13,22 @@ import java.util.Scanner;
 
 public class GraphModTester {
 
+
+
+
+	/**
+	 * This code is a Java program that creates a line graph using data from the MySQL database table and user input.
+	 * The program starts by creating a Scanner object to read user input, and a GraphMod object which contains methods 
+	 * for generating different types of graphs. It also creates a JFrame object, which is a window that will display the graph.
+	 * The user is prompted to enter a title for the graph, labels for the X and Y axes, and a label for the data. Then, a TimePeriodValues 
+	 * object is created to store the data.
+	 * Next, the program connects to a MySQL database using the DriverManager class, and executes a query to retrieve data from a table named range18100205.
+	 * The query selects the average value of a column named VALUE for each month in the table.
+	 * The program then loops through the results of the query and adds each data point to the TimePeriodValues object. The X values are represented by Month
+	 * objects, and the Y values are represented by doubles.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);

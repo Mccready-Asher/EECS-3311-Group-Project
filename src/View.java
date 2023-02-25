@@ -37,6 +37,18 @@ public class View extends JPanel implements ActionListener {
 	JFreeChart chart;
 	ChartPanel cp;
 
+	/**
+	 * This constructor is creating a view for displaying a chart and a table of data based on
+	 * the user's selections. It takes a Controller object as a parameter to get the data for 
+	 * the view.
+	 * 
+	 * Creates a GUI with various components such as combo boxes and a display button, sets up a 
+	 * chart for visualizing data, and adds them to the layout. It also retrieves data from the 
+	 * controller to populate the combo boxes.
+	 * 
+	 * @param controller instance of the controller of the MVC
+	 * @throws SQLException if there is an error connecting to or interacting with the SQL database
+	 */
 	public View(Controller controller) throws SQLException {
 		this.controller = controller;
 
@@ -95,6 +107,17 @@ public class View extends JPanel implements ActionListener {
 		add(scrollPane, BorderLayout.CENTER);
 	}
 
+
+
+
+	
+
+	/**
+	 *This method is called when the "Display" button is clicked. It retrieves the selected values from the GUI,
+	 *gets the relevant data from the controller, and displays it in a table and chart.
+
+	 *@param e the ActionEvent that triggered this method.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == displayButton) {
 			try {
@@ -115,6 +138,17 @@ public class View extends JPanel implements ActionListener {
 		}
 	}
 
+
+
+	/**
+	 *Displays a chart with the data provided in a list of RowData objects.
+	 *If the time granularity is set to "Monthly", it creates a TimePeriodValues object with month granularity,
+	 *otherwise it creates a TimePeriodValues object with yearly granularity.
+	 *The method removes the current series from the dataset and adds the new TimePeriodValues object to it.
+	 *Then, it repaints the chart panel (if one exists).
+	 *
+	 *@param data a list of RowData objects to be displayed in the chart
+*/
 	void displayTable(List<RowData> data) {
 		TimePeriodValues dataTP = new TimePeriodValues("whatev");
 		for (RowData rowData : data) {

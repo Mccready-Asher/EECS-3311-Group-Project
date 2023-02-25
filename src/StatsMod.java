@@ -2,6 +2,13 @@
 import org.apache.commons.math3.stat.inference.TTest;
 import org.jfree.data.time.TimePeriodValues;
 
+/**
+ * Calculates the T-test between two time series.
+ * 
+ * @param ser1 the first time series
+ * @param ser2 the second time series
+ * @return the T-test statistic between the two time series
+ */
 public class StatsMod {
 	public double timeSeriesTTest(TimePeriodValues ser1,TimePeriodValues ser2) {
 		
@@ -13,7 +20,15 @@ public class StatsMod {
 		
 		return tt.tTest(arr1, arr2);
 	}
-	private double[] toValArr(TimePeriodValues tpv) { //converts timeperiodvalues to array of doubles which contains the values ordered from first added to last added
+
+	/**
+	 * converts timeperiodvalues to array of doubles which contains the values ordered from first 
+	 * added to last added.
+	 * 
+	 * @param tpv the TimePeriodValues to be converted
+	 * @return an array of timePeriodValues as doubles
+	 */
+	private double[] toValArr(TimePeriodValues tpv) {
 		int j = tpv.getItemCount();
 		double[] ret = new double[j];
 		for(int i = 0; i<j;i++) {

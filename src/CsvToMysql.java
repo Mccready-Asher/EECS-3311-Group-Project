@@ -6,7 +6,20 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CsvToMysql {
-
+	/**
+	 * The main method is used to import data from a CSV file into a MySQL database.
+	 * The method first defines the file path, database connection details (URL, username, and password), 
+	 * and a boolean variable named skip that is used to skip the first line of the CSV file (which is usually 
+	 * the header row).
+	 * Inside the try block, the method connects to the MySQL database using the provided connection details. 
+	 * It then reads the CSV file using a BufferedReader object and inserts each row into the MySQL database 
+	 * using a PreparedStatement. The PreparedStatement is used to insert data in a safe and efficient manner,
+	 * preventing SQL injection attacks and optimizing query execution.
+	 * Lastly, the method executes two SQL queries to remove extra quote marks left from parsing the file, prints 
+	 * a success message to the console, and handles any exceptions that may occur during the process.
+	 * 
+	 * @param args
+	 */
     public static void main(String[] args) {
         String csvFilePath = "C:\\Users\\Yousif\\Downloads\\18100205.csv"; //path to the csv file.
         String url = "jdbc:mysql://localhost:8080/proj3311"; // yours will probably on port 3306.

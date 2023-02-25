@@ -26,6 +26,12 @@ public class ProjUIDemo {
 	private int width;
 	private int height;
 	
+
+	/**
+	 * Constructs a new ProjUIDemo object with the specified width and height.
+	 * @param w the width of the window
+	 * @param h the height of the window
+	 */
 	public ProjUIDemo(int w, int h) { 
 		frame = new JFrame();
 		button1 = new JButton("Start");
@@ -33,20 +39,35 @@ public class ProjUIDemo {
 		width = w;
 		height = h;
 	}
-	public void launchAppDemo() { //one method to set everything off, makes the tester class as small as possible.
+
+	/**
+	 * Launches the application demo by setting up the frame, button listeners, and title.
+	 * One method to set everything off, makes the tester class as small as possible.
+	*/
+	public void launchAppDemo() { 
 		setUpFrame();
 		setUpButtonListeners();
 		setTitle();
 	}
 	
-	public void setUpFrame() { //basic frame setup, state-agnostic
+	/**
+	 * Sets up the basic frame for the application with the specified width and height, sets the title to "Project GUI Demo",
+	 * and sets the default close operation to exit the application when the user clicks the "X" button.
+	*/
+	public void setUpFrame() { 
 		frame.setSize(width,height);
 		frame.setTitle("Project GUI Demo.");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
 	
-	public void setTitle(){ //deletes everything end sets to the "title screen" state
+
+	/**
+	 * Sets the title screen of the application by replacing all components in the JFrame's content pane with a title, subtitle,
+	 * developer team label, etc. along with a "Start" button. This method uses a BoxLayout to vertically align the components
+	 * in the center of the JFrame.
+	*/
+	public void setTitle(){ 
 		
 		Container cp = frame.getContentPane();
 		
@@ -55,7 +76,7 @@ public class ProjUIDemo {
 		BoxLayout box = new BoxLayout(cp,BoxLayout.Y_AXIS);
 		cp.setLayout(box);
 		
-		JLabel blank = new JLabel(" "); //this is  scuffed as fuck
+		JLabel blank = new JLabel(" "); 
 		JLabel tit = new JLabel("this is a title"); //to be replaced, duh
 		JLabel subtit = new JLabel("this is a subtitle");
 		JLabel devteam= new JLabel("this is where our names go");
@@ -67,7 +88,7 @@ public class ProjUIDemo {
 		etc.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		cp.add(blank);//once again scuffed as fuck, but ill fix this later
+		cp.add(blank);
 		cp.add(Box.createRigidArea(new Dimension(0,230)));
 		
 		cp.add(tit);
@@ -78,7 +99,11 @@ public class ProjUIDemo {
 		
 		frame.setVisible(true);
 	}
+
 	
+	/**
+	 * Sets up the "menu state" of the UI, which displays several visualization options as buttons.
+	*/
 	public void setMenu() { //moves to "menu state"
 		Container cp = frame.getContentPane();
 		nuke();
@@ -116,7 +141,10 @@ public class ProjUIDemo {
 		frame.setVisible(true);
 	}
 	
-	
+	/**
+	 * Sets up the "unimplemented" state when a user selects a visualization option that has not yet been implemented.
+	 * Displays a message indicating that the content has not been implemented and prompts the user to return to the menu.
+	 */
 	public void unimp() {
 		Container cp = frame.getContentPane();
 		
@@ -155,6 +183,14 @@ public class ProjUIDemo {
 		frame.setVisible(true);
 	}
 	
+
+
+	/**
+	 * Sets the GUI to display a demo visualization.
+	 * The method creates a new layout and adds a "Back" button and the demo chart to the container.
+	 * The "Back" button returns the user to the main menu.
+	*/
+	
 	public void setDemo1() {
 		Container cp = frame.getContentPane();
 		
@@ -183,14 +219,23 @@ public class ProjUIDemo {
 		frame.setVisible(true);
 	}
 	
-	private void nuke() { //eraser method with a flair for the dramatic 
+
+	/**
+	 * Removes all components from the content pane of the main JFrame
+	 * The method removes all components, revalidates the container, and repaints it.
+	 * An eraser method with a flair for the dramatic 
+	*/
+	private void nuke() { 
 		Container cp = frame.getContentPane();
-		cp.removeAll(); //remember your 3 Rs!
+		cp.removeAll(); 
 		cp.revalidate();
 		cp.repaint();
 	}
 	
-	
+	/**
+	 * Sets up the action listeners for the two buttons in the GUI.
+	 * The first button returns the user to the main menu, and the second button sets the title of the GUI.
+	*/
 	public void setUpButtonListeners() {
 		ActionListener buttonListener1 = new ActionListener() {
 			@Override
@@ -210,6 +255,13 @@ public class ProjUIDemo {
 	}
 	
 	
+
+	/**
+	 * Assigns an ActionListener to a given JButton that calls the unimp() method when clicked.
+	 * 
+	 * @param jb the JButton to assign the ActionListener to
+	 * @return the modified JButton with the ActionListener assigned
+	 */
 	public JButton unimpLink(JButton jb) {
 		ActionListener unimBL = new ActionListener() {
 			@Override
@@ -222,6 +274,15 @@ public class ProjUIDemo {
 		return jb;
 	}
 	
+
+
+	/**
+	 * Creates a demo chart with a predefined set of data and returns it as a ChartPanel.
+	 * The chart displays the relationship between the number of concurrent assignments and 
+	 * the average energy drinks drunk per day.
+	 * 
+	 * @return a ChartPanel containing the demo chart
+	*/
 	private ChartPanel getDemoChart() {
 		XYSeries series = new XYSeries("XYGraph");
 		series.add(1, 0);

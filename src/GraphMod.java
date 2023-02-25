@@ -9,6 +9,15 @@ import org.jfree.data.time.TimePeriodValuesCollection;
 import org.jfree.chart.plot.PlotOrientation;
 
 public class GraphMod {
+	/**
+	 * Creates a line graph with the specified title, x-axis label, y-axis label, and data.
+	 * 
+	 * @param title the title of the graph
+	 * @param xAxis the label for the x-axis
+	 * @param yAxis the label for the y-axis
+	 * @param data the data to be plotted on the graph
+	 * @return a ChartPanel containing the line graph
+	 */
 	public ChartPanel getLineGraph( String title, String xAxis, String yAxis, TimePeriodValues data){
 	
 		TimePeriodValuesCollection dataset = new TimePeriodValuesCollection();
@@ -18,4 +27,5 @@ public class GraphMod {
 		
 		return new ChartPanel(chart);
 	}
+
 }
